@@ -54,10 +54,10 @@ Examples:
 */
 
 function addKeyAndValue(arr, key, value) {
-    arr.forEach(function (val) {
-        val[key] = value;
-        });
-      return arr
+  return arr.reduce(function(accum, val) {
+    val[key] = value
+    return accum = accum.concat(val);
+  }, []);
 }
 
 /*
