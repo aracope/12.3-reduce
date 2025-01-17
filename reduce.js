@@ -7,9 +7,9 @@ Examples:
 */
 
 function extractValue(arr, key) {
-    return arr.reduce(function(accum,val,i) {
-        return accum = accum.concat(val[key]);
-    },[]);
+  return arr.reduce(function(accum,val,i) {
+    return accum = accum.concat(val[key]);
+  }, []);
 }
 
 /*
@@ -24,19 +24,20 @@ Examples:
 */
 
 function vowelCount(str) {;
-  const vowels = 'aeiou'
+  const vowels = 'aeiou';
+
   return str.split('').reduce(function(accum, val) {
     let lowCase = val.toLowerCase();
-        if(vowels.indexOf(lowCase) !== -1) {
-      if(lowCase in accum) {
-        accum[lowCase]++;
-      } else {
+      if(vowels.indexOf(lowCase) !== -1) {
+        if(lowCase in accum) {
+          accum[lowCase]++;
+        } else {
         accum[lowCase] = 1;
+          }
       }
-    }
-      return accum;
-    }, {});
-  }
+    return accum;
+  }, {});
+}
 
 /*
 Write a function called addKeyAndValue which accepts an array of objects and returns the array of objects passed to it with each object now including the key and value passed to the function.
@@ -82,4 +83,13 @@ Examples:
     partition(names, isLongerThanThreeCharacters) // [['Elie', 'Colt', 'Matt'], ['Tim']]
 */
 
-function partition(arr, callback) {}
+function partition(arr, callback) {
+  return arr.reduce(function(accum, val) {
+    if(callback(val)) {
+      accum[0] = accum[0].concat(val);
+    } else {
+        accum[1] = accum[1].concat(val);
+      }
+    return accum;
+  }, [[],[]]);
+}
