@@ -24,8 +24,23 @@ Examples:
 */
 
 function vowelCount(str) {
+    let splitArray = str.toLowerCase().split("");
+    let vowelCount = {};
+    const vowels = "aeiou";
+  
+    splitArray.forEach(function(letter){
+        if(vowels.indexOf(letter) !== -1) {
+            if(vowelCount[letter]){
+                vowelCount[letter]++;
+            } else {
+                vowelCount[letter] = 1;
+            }
+        }
+    });
+    return vowelCount;
   
 }
+
 
 /*
 Write a function called addKeyAndValue which accepts an array of objects and returns the array of objects passed to it with each object now including the key and value passed to the function.
@@ -42,7 +57,12 @@ Examples:
        ]
 */
 
-function addKeyAndValue(arr, key, value) {}
+function addKeyAndValue(arr, key, value) {
+    arr.forEach(function (val) {
+        val[key] = value;
+        });
+      return arr
+}
 
 /*
 Write a function called partition which accepts an array and a callback and returns an array with two arrays inside of it. The partition function should run the callback function on each value in the array and if the result of the callback function at that specific value is true, the value should be placed in the first subarray. If the result of the callback function at that specific value is false, the value should be placed in the second subarray. 
